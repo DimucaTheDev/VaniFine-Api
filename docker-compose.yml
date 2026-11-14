@@ -1,0 +1,15 @@
+﻿services:
+  vanifine.webapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: vanifine.webapi:latest
+    container_name: vanifine.webapi
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - VERSIONS_JSON_PATH=/app/data/versions.json
+    volumes:
+      - ./data:/app/data
